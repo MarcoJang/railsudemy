@@ -1,0 +1,25 @@
+<h2>다음 에러가 나타나면 Article에 입력이 되지 않습니다.</h2>
+<% if @article.errors.any? %>
+    <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+        
+<%= form_for @article do |f| %>
+    <p>
+        <%= f.label :title %> <br/>
+        <%= f.text_field :title %>
+    </p>
+    <p>
+        <%= f.label :description %><br/>
+        <%= f.text_area :description %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+
+<% end %>
+
+<%= link_to "아티클 리스팅으로 돌아가기", articles_path %>
